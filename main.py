@@ -230,7 +230,7 @@ def translate(task):
             term1 += letter
 
     if term1_type == 2:
-        term1 = "someone who"
+        term1 = "someone that"
 
     term2 = ""
     for letter in term2_temp:
@@ -339,8 +339,8 @@ def constructSentence(sentenceType, copulaType, term1, term2, term1_type, term2_
             copula_str = "implies that"
             # make term2 lowercase
             term2 = term2[0:1].lower() + term2[1:]
-            # replace the word who in term2
-            term2 = term2.replace("who ", "")
+            # replace the word that in term2
+            term2 = term2.replace("that ", "")
 
 
     match sentenceType:
