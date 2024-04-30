@@ -230,7 +230,7 @@ def translate(task):
             term1 += letter
 
     if term1_type == 2:
-        term1 = "someone that"
+        term1 = "someone/something that"
 
     term2 = ""
     for letter in term2_temp:
