@@ -79,15 +79,60 @@
 
 
 def main():
-    translate("<human --> lifeform>.")
+    example1 = "<human --> lifeform>."
+    example1_result = translate(example1)
+
+    example2 = "<{tim} --> (/,livingIn,_,{graz})>."
+    example2_result = translate(example2)
+
+    example3 = "<sunglasses --> (&,[black],glasses)>."
+    example3_result = translate(example3)
+
+    example4 = "<{?who} --> murder>?"
+    example4_result = translate(example4)
+
+    example5 = "<{tim} --> (/,livingIn,_,{graz})>. %0%"
+    example5_result = translate(example5)
+
+    example6 = "<{tim} --> (/,livingIn,_,{graz})>. %50%"
+    example6_result = translate(example6)
+
+    example7 = "<$1 --> [aggressive]>."
+    example7_result = translate(example7)
+
     print()
-    translate("<{tim} --> (/,livingIn,_,{graz})>.")
-    print()
-    translate("<sunglasses --> (&,[black],glasses)>.")
-    print()
-    translate("<{?who} --> murder>?")
+    print(example1)
+    print("Result:", example1_result)
+
+    print(example2)
+    print("Result:", example2_result)
+
+    print(example3)
+    print("Result:", example3_result)
+
+    print(example4)
+    print("Result:", example4_result)
+
+    print(example5)
+    print("Result:", example5_result)
+
+    print(example6)
+    print("Result:", example6_result)
+
+    print(example7)
+    print("Result:", example7_result)
+
 
 def translate(task):
+    # Check if task includes a percentage at end
+    probability = -1
+    if task[-1:len(task)] == "%":
+        tasks = task.split("%")
+        task = tasks[0]
+        task = task[0:-1]
+        probability = int(tasks[1])
+    print(probability)
+
     sentenceType = getSentenceType(task)
     if sentenceType == -1:
         print("Invalid sentence type")
@@ -149,15 +194,18 @@ def translate(task):
         if letter.isalnum():
             term1 += letter
 
+    if term1_type == 2:
+        term1 = "someone that"
+
     term2 = ""
     for letter in term2_temp:
         if letter.isalnum():
             term2 += letter
 
     # Construct sentence
-    result = constructSentence(sentenceType, copula, term1, term2, term1_type, term2_type, verb)
+    result = constructSentence(sentenceType, copula, term1, term2, term1_type, term2_type, verb, probability)
 
-    print("Result:", result)
+    return result
 
 
 def getSentenceType(sentence):
@@ -220,13 +268,13 @@ def getCompoundTerm(term):
     match term:
         case "{":
             return 1
-        case "{":
+        case "$":
             return 2
         case _:
             return -1
 
 
-def constructSentence(sentenceType, copulaType, term1, term2, term1_type, term2_type, verb):
+def constructSentence(sentenceType, copulaType, term1, term2, term1_type, term2_type, verb, probability):
     print("Constructing sentence")
     # Construct sentence
     result = ""
@@ -235,6 +283,11 @@ def constructSentence(sentenceType, copulaType, term1, term2, term1_type, term2_
 
     if verb != "":
         verb = " " + verb
+
+    # Check if verb has a capital letter
+    for letter in verb:
+        if letter.isupper():
+            verb = verb.replace(letter, " " + letter.lower())
 
     match copulaType:
         case 1:
@@ -246,14 +299,24 @@ def constructSentence(sentenceType, copulaType, term1, term2, term1_type, term2_
                     term2 += "s"
                 copula_str = "are"
             elif verb == "":
-                verb = " the"
-
+                verb = " (the)"
 
     match sentenceType:
         case 1:
             result = term1 + " " + copula_str + verb + " " + term2
         case 2:
             result = term1 + " " + copula_str + verb + " " + term2 + "?"
+
+    match probability:
+        case 0:
+            result = term1 + " " + copula_str + " not" + verb + " " + term2
+        case -1:
+            pass
+        case _:
+            result = "There is a " + str(probability) + "% chance that " + result
+
+    # Capitalize first letter
+    result = result[0].upper() + result[1:]
 
     return result
 
