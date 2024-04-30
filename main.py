@@ -103,6 +103,9 @@ def main():
     example8 = "<<$1 --> [aggressive]> ==> <$1 --> murder>>."
     example8_result = translate(example8)
 
+    example9 = "<<$1 --> (/,livingIn,_,{graz})> ==> <$1 --> murder>>."
+    example9_result = translate(example9)
+
     print()
     print(example1)
     print("Result:", example1_result)
@@ -127,6 +130,9 @@ def main():
 
     print(example8)
     print("Result:", example8_result)
+
+    print(example9)
+    print("Result:", example9_result)
 
 
 def translate(task):
