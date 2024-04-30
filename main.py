@@ -100,6 +100,9 @@ def main():
     example7 = "<$1 --> [aggressive]>."
     example7_result = translate(example7)
 
+    example8 = "<<$1 --> [aggressive]> ==> <$1 --> murder>>."
+    example8_result = translate(example8)
+
     print()
     print(example1)
     print("Result:", example1_result)
@@ -122,8 +125,34 @@ def main():
     print(example7)
     print("Result:", example7_result)
 
+    print(example8)
+    print("Result:", example8_result)
+
 
 def translate(task):
+    # Check if task contains more than 1 sentence
+    if task[1:2] == "<":
+        # Split sentence into words
+        words = task.split(' ')
+
+        # Join the first four words (up to the 3rd space)
+        sentence1 = ' '.join(words[:3])
+        sentence1 = sentence1[1:] + "."
+        print("Sentence1:", sentence1)
+        sentence2 = ' '.join(words[4:])
+        sentence2 = sentence2[0:-2] + "."
+        print("Sentence2:", sentence2)
+
+        result1 = translate(sentence1)
+        result2 = translate(sentence2)
+
+        sentenceType = getSentenceType(words[-1])
+        copulaType = getCopula(words[3])
+
+        result = constructSentence(sentenceType, copulaType, result1, result2, 1, 1, "", -1)
+
+        return result
+
     # Check if task includes a percentage at end
     probability = -1
     if task[-1:len(task)] == "%":
@@ -195,7 +224,7 @@ def translate(task):
             term1 += letter
 
     if term1_type == 2:
-        term1 = "someone that"
+        term1 = "someone who"
 
     term2 = ""
     for letter in term2_temp:
@@ -300,6 +329,13 @@ def constructSentence(sentenceType, copulaType, term1, term2, term1_type, term2_
                 copula_str = "are"
             elif verb == "":
                 verb = " (the)"
+        case 6:
+            copula_str = "implies that"
+            # make term2 lowercase
+            term2 = term2[0:1].lower() + term2[1:]
+            # replace the word who in term2
+            term2 = term2.replace("who ", "")
+
 
     match sentenceType:
         case 1:
