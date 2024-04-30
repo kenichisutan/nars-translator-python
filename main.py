@@ -106,6 +106,9 @@ def main():
     example9 = "<<$1 --> (/,livingIn,_,{graz})> ==> <$1 --> murder>>."
     example9_result = translate(example9)
 
+    example10 = "<lifeform <-> machine>."
+    example10_result = translate(example10)
+
     print()
     print(example1)
     print("Result:", example1_result)
@@ -133,6 +136,9 @@ def main():
 
     print(example9)
     print("Result:", example9_result)
+
+    print(example10)
+    print("Result:", example10_result)
 
 
 def translate(task):
@@ -335,6 +341,14 @@ def constructSentence(sentenceType, copulaType, term1, term2, term1_type, term2_
                 copula_str = "are"
             elif verb == "":
                 verb = " (the)"
+        case 2:
+            copula_str = "is similar to"
+            if term1_type == -1:
+                if term1[ -1 ] != "s":
+                    term1 += "s"
+                if term2[ -1 ] != "s":
+                    term2 += "s"
+                copula_str = "are similar to"
         case 6:
             copula_str = "implies that"
             # make term2 lowercase
