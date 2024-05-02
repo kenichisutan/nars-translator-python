@@ -112,39 +112,90 @@ def main():
     example11 = "<Tim {-- human>."
     example11_result = translate(example11)
 
+    # print()
+    # print(example1)
+    # print("Result:", example1_result)
+    #
+    # print(example2)
+    # print("Result:", example2_result)
+    #
+    # print(example3)
+    # print("Result:", example3_result)
+    #
+    # print(example4)
+    # print("Result:", example4_result)
+    #
+    # print(example5)
+    # print("Result:", example5_result)
+    #
+    # print(example6)
+    # print("Result:", example6_result)
+    #
+    # print(example7)
+    # print("Result:", example7_result)
+    #
+    # print(example8)
+    # print("Result:", example8_result)
+    #
+    # print(example9)
+    # print("Result:", example9_result)
+    #
+    # print(example10)
+    # print("Result:", example10_result)
+    #
+    # print(example11)
+    # print("Result:", example11_result)
+
+    detective1 = "<{tim} --> (/,livingIn,_,{graz})>."
+    detective2 = "<{tim} --> (/,livingIn,_,{graz})>. %0%"
+    detective3 = "<<(*,$1,sunglasses) --> own> ==> <$1 --> [aggressive]>>."
+    detective4 = "<(*,{tom},(&,[black],glasses)) --> own>."
+    detective5 = "<<$1 --> [aggressive]> ==> <$1 --> murder>>."
+    detective6 = "<<$1 --> (/,livingIn,_,{graz})> ==> <$1 --> murder>>."
+    detective7 = "<sunglasses --> (&,[black],glasses)>."
+    detective8 = "<{?who} --> murder>?"
+
+    detective1_result = translate(detective1)
+    detective2_result = translate(detective2)
+    detective3_result = translate(detective3)
+    detective4_result = translate(detective4)
+    detective5_result = translate(detective5)
+    detective6_result = translate(detective6)
+    detective7_result = translate(detective7)
+    detective8_result = translate(detective8)
+
     print()
-    print(example1)
-    print("Result:", example1_result)
+    print(detective1)
+    print(detective1_result)
+    print()
 
-    print(example2)
-    print("Result:", example2_result)
+    print(detective2)
+    print(detective2_result)
+    print()
 
-    print(example3)
-    print("Result:", example3_result)
+    print(detective3)
+    print(detective3_result)
+    print()
 
-    print(example4)
-    print("Result:", example4_result)
+    print(detective4)
+    print(detective4_result)
+    print()
 
-    print(example5)
-    print("Result:", example5_result)
+    print(detective5)
+    print(detective5_result)
+    print()
 
-    print(example6)
-    print("Result:", example6_result)
+    print(detective6)
+    print(detective6_result)
+    print()
 
-    print(example7)
-    print("Result:", example7_result)
+    print(detective7)
+    print(detective7_result)
+    print()
 
-    print(example8)
-    print("Result:", example8_result)
-
-    print(example9)
-    print("Result:", example9_result)
-
-    print(example10)
-    print("Result:", example10_result)
-
-    print(example11)
-    print("Result:", example11_result)
+    print(detective8)
+    print(detective8_result)
+    print()
 
 
 def translate(task):
