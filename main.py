@@ -172,13 +172,13 @@ def translate(task):
         return result
 
     # Check if task includes a percentage at end
-    probability = -1
+    frequency = -1
     if task[-1:len(task)] == "%":
         tasks = task.split("%")
         task = tasks[0]
         task = task[0:-1]
-        probability = int(tasks[1])
-    print(probability)
+        frequency = int(tasks[1])
+    print(frequency)
 
     sentenceType = getSentenceType(task)
     if sentenceType == -1:
@@ -250,7 +250,7 @@ def translate(task):
             term2 += letter
 
     # Construct sentence
-    result = constructSentence(sentenceType, copula, term1, term2, term1_type, term2_type, verb, probability)
+    result = constructSentence(sentenceType, copula, term1, term2, term1_type, term2_type, verb, frequency)
 
     return result
 
@@ -321,7 +321,7 @@ def getCompoundTerm(term):
             return -1
 
 
-def constructSentence(sentenceType, copulaType, term1, term2, term1_type, term2_type, verb, probability):
+def constructSentence(sentenceType, copulaType, term1, term2, term1_type, term2_type, verb, frequency):
     print("Constructing sentence")
     # Construct sentence
     result = ""
@@ -371,13 +371,13 @@ def constructSentence(sentenceType, copulaType, term1, term2, term1_type, term2_
         case 2:
             result = term1 + " " + copula_str + verb + " " + term2 + "?"
 
-    match probability:
+    match frequency:
         case 0:
             result = term1 + " " + copula_str + " not" + verb + " " + term2
         case -1:
             pass
         case _:
-            result = "There is a " + str(probability) + "% chance that " + result
+            result = "There is a " + str(frequency) + "% chance that " + result
 
     # Capitalize first letter
     result = result[0].upper() + result[1:]
