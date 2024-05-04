@@ -79,38 +79,38 @@
 
 
 def main():
-    example1 = "<human --> lifeform>."
-    example1_result = translate(example1)
-
-    example2 = "<{tim} --> (/,livingIn,_,{graz})>."
-    example2_result = translate(example2)
-
-    example3 = "<sunglasses --> (&,[black],glasses)>."
-    example3_result = translate(example3)
-
-    example4 = "<{?who} --> murder>?"
-    example4_result = translate(example4)
-
-    example5 = "<{tim} --> (/,livingIn,_,{graz})>. %0%"
-    example5_result = translate(example5)
-
-    example6 = "<{tim} --> (/,livingIn,_,{graz})>. %50%"
-    example6_result = translate(example6)
-
-    example7 = "<$1 --> [aggressive]>."
-    example7_result = translate(example7)
-
-    example8 = "<<$1 --> [aggressive]> ==> <$1 --> murder>>."
-    example8_result = translate(example8)
-
-    example9 = "<<$1 --> (/,livingIn,_,{graz})> ==> <$1 --> murder>>."
-    example9_result = translate(example9)
-
-    example10 = "<lifeform <-> machine>."
-    example10_result = translate(example10)
-
-    example11 = "<Tim {-- human>."
-    example11_result = translate(example11)
+    # example1 = "<human --> lifeform>."
+    # example1_result = translate(example1)
+    #
+    # example2 = "<{tim} --> (/,livingIn,_,{graz})>."
+    # example2_result = translate(example2)
+    #
+    # example3 = "<sunglasses --> (&,[black],glasses)>."
+    # example3_result = translate(example3)
+    #
+    # example4 = "<{?who} --> murder>?"
+    # example4_result = translate(example4)
+    #
+    # example5 = "<{tim} --> (/,livingIn,_,{graz})>. %0%"
+    # example5_result = translate(example5)
+    #
+    # example6 = "<{tim} --> (/,livingIn,_,{graz})>. %50%"
+    # example6_result = translate(example6)
+    #
+    # example7 = "<$1 --> [aggressive]>."
+    # example7_result = translate(example7)
+    #
+    # example8 = "<<$1 --> [aggressive]> ==> <$1 --> murder>>."
+    # example8_result = translate(example8)
+    #
+    # example9 = "<<$1 --> (/,livingIn,_,{graz})> ==> <$1 --> murder>>."
+    # example9_result = translate(example9)
+    #
+    # example10 = "<lifeform <-> machine>."
+    # example10_result = translate(example10)
+    #
+    # example11 = "<Tim {-- human>."
+    # example11_result = translate(example11)
 
     # print()
     # print(example1)
@@ -146,56 +146,68 @@ def main():
     # print(example11)
     # print("Result:", example11_result)
 
-    detective1 = "<{tim} --> (/,livingIn,_,{graz})>."
-    detective2 = "<{tim} --> (/,livingIn,_,{graz})>. %0%"
-    detective3 = "<<(*,$1,sunglasses) --> own> ==> <$1 --> [aggressive]>>."
-    detective4 = "<(*,{tom},(&,[black],glasses)) --> own>."
-    detective5 = "<<$1 --> [aggressive]> ==> <$1 --> murder>>."
-    detective6 = "<<$1 --> (/,livingIn,_,{graz})> ==> <$1 --> murder>>."
-    detective7 = "<sunglasses --> (&,[black],glasses)>."
-    detective8 = "<{?who} --> murder>?"
+    # detective1 = "<{tim} --> (/,livingIn,_,{graz})>."
+    # detective2 = "<{tim} --> (/,livingIn,_,{graz})>. %0%"
+    # detective3 = "<<(*,$1,sunglasses) --> own> ==> <$1 --> [aggressive]>>."
+    # detective4 = "<(*,{tom},(&,[black],glasses)) --> own>."
+    # detective5 = "<<$1 --> [aggressive]> ==> <$1 --> murder>>."
+    # detective6 = "<<$1 --> (/,livingIn,_,{graz})> ==> <$1 --> murder>>."
+    # detective7 = "<sunglasses --> (&,[black],glasses)>."
+    # detective8 = "<{?who} --> murder>?"
+    #
+    # detective1_result = translate(detective1)
+    # detective2_result = translate(detective2)
+    # detective3_result = translate(detective3)
+    # detective4_result = translate(detective4)
+    # detective5_result = translate(detective5)
+    # detective6_result = translate(detective6)
+    # detective7_result = translate(detective7)
+    # detective8_result = translate(detective8)
+    #
+    # print()
+    # print(detective1)
+    # print(detective1_result)
+    # print()
+    #
+    # print(detective2)
+    # print(detective2_result)
+    # print()
+    #
+    # print(detective3)
+    # print(detective3_result)
+    # print()
+    #
+    # print(detective4)
+    # print(detective4_result)
+    # print()
+    #
+    # print(detective5)
+    # print(detective5_result)
+    # print()
+    #
+    # print(detective6)
+    # print(detective6_result)
+    # print()
+    #
+    # print(detective7)
+    # print(detective7_result)
+    # print()
+    #
+    # print(detective8)
+    # print(detective8_result)
+    # print()
 
-    detective1_result = translate(detective1)
-    detective2_result = translate(detective2)
-    detective3_result = translate(detective3)
-    detective4_result = translate(detective4)
-    detective5_result = translate(detective5)
-    detective6_result = translate(detective6)
-    detective7_result = translate(detective7)
-    detective8_result = translate(detective8)
+    # Do a loop to get input from user
+    while True:
+        # Get input from user stdinput
+        task = input("Enter a sentence: ")
+        result = translate(task)
+        print("Result:", result)
 
-    print()
-    print(detective1)
-    print(detective1_result)
-    print()
-
-    print(detective2)
-    print(detective2_result)
-    print()
-
-    print(detective3)
-    print(detective3_result)
-    print()
-
-    print(detective4)
-    print(detective4_result)
-    print()
-
-    print(detective5)
-    print(detective5_result)
-    print()
-
-    print(detective6)
-    print(detective6_result)
-    print()
-
-    print(detective7)
-    print(detective7_result)
-    print()
-
-    print(detective8)
-    print(detective8_result)
-    print()
+        # Ask user if they want to continue
+        continue_input = input("Do you want to continue? (y/n): ")
+        if continue_input == "n":
+            break
 
 
 def translate(task):
